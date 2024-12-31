@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';  // Updated import
+import { useNavigate } from 'react-router-dom'; 
 import { setToken } from '../redux/authSlice';
 import { login } from '../services/api';
 
@@ -11,7 +11,7 @@ const Login = () => {
   });
   const [error, setError] = useState('');
   const dispatch = useDispatch();
-  const navigate = useNavigate();  // Updated hook
+  const navigate = useNavigate(); 
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -24,7 +24,7 @@ const Login = () => {
     try {
       const response = await login(formData);
       dispatch(setToken(response.data.access));
-      navigate('/dashboard');  // Updated navigation method
+      navigate('/dashboard'); 
     } catch (err) {
       setError(err.response?.data?.detail || 'Login failed');
     }
